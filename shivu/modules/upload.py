@@ -12,7 +12,7 @@ img_url character-name anime-name rarity-number
 
 use rarity number accordingly rarity Map
 
-rarity_map = 1 (🟢 Common), 2 (🟣 Rare) , 3 (🟡 Legendary), 4 (⚪ Medium), 5 (💮 Special Edition), 6 (🔮 Premium Edition), 7 (🎗️ Supreme)"""
+rarity_map = 1 (🟢 Common), 2 (🟣 Rare) , 3 (🟡 Legendary), 4 (💮 Special Edition), 5 (🔮 Premium Edition), 6 (🎗️ Supreme)"""
 
 
 
@@ -48,7 +48,7 @@ async def upload(update: Update, context: CallbackContext) -> None:
             await update.message.reply_text('Invalid URL.')
             return
 
-        rarity_map = {1: "🟢 Common", 2: "🟣 Rare", 3: "🟡 Legendary", 4: "⚪ Medium", 5: "💮 Special Edition", 6: "🔮 Premium Edition",7: "🎗️ Supreme"}
+        rarity_map = {1: "🟢 Common", 2: "🟣 Rare", 3: "🟡 Legendary", 4: "💮 Special Edition", 5: "🔮 Premium Edition",6: "🎗️ Supreme"}
         try:
             rarity = rarity_map[int(args[3])]
         except KeyError:
@@ -69,7 +69,7 @@ async def upload(update: Update, context: CallbackContext) -> None:
             message = await context.bot.send_photo(
                 chat_id=CHARA_CHANNEL_ID,
                 photo=args[0],
-                caption=f'<b>Character Name:</b> {character_name}\n<b>Anime Name:</b> {anime}\n<b>Rarity:</b> {rarity}\n<b>ID:</b> {id}\nAdded by <a href="tg://user?id={update.effective_user.id}">{update.effective_user.first_name}</a>',
+                caption=f'<b>Character 𝙉𝙖𝙢𝙚:</b> {character_name}\n<b>𝘼𝙣𝙞𝙢𝙚 𝙉𝙖𝙢𝙚:</b> {anime}\n<b>𝙍𝙖𝙧𝙞𝙩𝙮:</b> {rarity}\n<b>𝙄𝘿:</b> {id}\n𝘼𝙙𝙙𝙚𝙙 𝘽𝙮 ➪ <a href="tg://user?id={update.effective_user.id}">{update.effective_user.first_name}</a>',
                 parse_mode='HTML'
             )
             character['message_id'] = message.message_id
@@ -132,7 +132,7 @@ async def update(update: Update, context: CallbackContext) -> None:
         if args[1] in ['name', 'anime']:
             new_value = args[2].replace('-', ' ').title()
         elif args[1] == 'rarity':
-            rarity_map = {1: "🟢 Common", 2: "🟣 Rare", 3: "🟡 Legendary", 4: "⚪ Medium", 5: "💮 Special Edition", 6 : "🔮 Premium Edition", 7: "🎗️ Supreme"}
+            rarity_map = {1: "🟢 Common", 2: "🟣 Rare", 3: "🟡 Legendary", 4: "💮 Special Edition", 5 : "🔮 Premium Edition", 6: "🎗️ Supreme"}
             try:
                 new_value = rarity_map[int(args[2])]
             except KeyError:
@@ -149,7 +149,7 @@ async def update(update: Update, context: CallbackContext) -> None:
             message = await context.bot.send_photo(
                 chat_id=CHARA_CHANNEL_ID,
                 photo=new_value,
-                caption=f'<b>Character Name:</b> {character["name"]}\n<b>Anime Name:</b> {character["anime"]}\n<b>Rarity:</b> {character["rarity"]}\n<b>ID:</b> {character["id"]}\nUpdated by <a href="tg://user?id={update.effective_user.id}">{update.effective_user.first_name}</a>',
+                caption=f'<b>Character 𝙉𝙖𝙢𝙚:</b> {character["name"]}\n<b>𝘼𝙣𝙞𝙢𝙚 𝙉𝙖𝙢𝙚:</b> {character["anime"]}\n<b>𝙍𝙖𝙧𝙞𝙩𝙮:</b> {character["rarity"]}\n<b>ID:</b> {character["id"]}\n𝙐𝙥𝙙𝙖𝙩𝙚𝙙 𝘽𝙮 ➪ <a href="tg://user?id={update.effective_user.id}">{update.effective_user.first_name}</a>',
                 parse_mode='HTML'
             )
             character['message_id'] = message.message_id
