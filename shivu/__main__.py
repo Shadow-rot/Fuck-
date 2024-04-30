@@ -100,7 +100,7 @@ async def send_image(update: Update, context: CallbackContext) -> None:
     await context.bot.send_photo(
         chat_id=chat_id,
         photo=character['img_url'],
-        caption=f"""A New {character['rarity']} Character Appeared...\n/guess Character Name and add in Your Harem""",
+        caption=f""" {character['rarity']} ʟᴏᴏᴋ ᴀ ᴡᴀɪғᴜ ʜᴀꜱ ꜱᴘᴀᴡɴᴇᴅ !! ᴍᴀᴋᴇ ʜᴇʀ ʏᴏᴜʀ'ꜱ ʙʏ ɢɪᴠɪɴɢ /grab 𝚆𝚊𝚒𝚏𝚞 𝚗𝚊𝚖𝚎""",
         parse_mode='Markdown')
 
 
@@ -112,7 +112,7 @@ async def guess(update: Update, context: CallbackContext) -> None:
         return
 
     if chat_id in first_correct_guesses:
-        await update.message.reply_text(f'❌️ Already Guessed By Someone.. Try Next Time Bruhh ')
+        await update.message.reply_text(f'❌️ Already Grabbed By Someone.. Try Next Time Bruhh ')
         return
 
     guess = ' '.join(context.args).lower() if context.args else ''
