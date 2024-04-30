@@ -34,9 +34,14 @@ async def start(update: Update, context: CallbackContext) -> None:
         
         
         caption = f"""
-         ***Heyyyy...***
+         ***Hellooo...***
 
-***I am Grabbing Your Waifu Bot...Add Me in Your group.. And I will send Random Characters After.. every 100 messages in Group... Use /grab to.. Collect that Characters in Your Collection.. and see Collection by using /Harem... So add in Your groups and Collect Your harem***
+***◈ ━━━━━━━━ ● ━━━━━━━━ ◈
+
+✧⁠ WHAT AM I - ɪ ᴀᴍ "ɢʀᴀʙʙɪɴɢ ʏᴏᴜʀ ᴡᴀɪꜰᴜ ʙᴏᴛ"... ᴀᴅᴅ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ...✨️ ᴀɴᴅ ɪ ᴡɪʟʟ sᴇɴᴅ ʀᴀɴᴅᴏᴍ ᴄʜᴀʀᴀᴄᴛᴇʀs ᴀғᴛᴇʀ.. ᴇᴠᴇʀʏ 𝟷𝟶𝟶 ᴍᴇssᴀɢᴇs ɪɴ ɢʀᴏᴜᴘ.
+✧⁠ COMMAND - ᴜsᴇ /grab  ᴛᴏ ᴄᴏʟʟᴇᴄᴛ ᴛʜᴀᴛ ᴄʜᴀʀᴀᴄᴛᴇʀs ɪɴ ʏᴏᴜʀ ᴄᴏʟʟᴇᴄᴛɪᴏɴ ᴀɴᴅ sᴇᴇ ᴄᴏʟʟᴇᴄᴛɪᴏɴ ʙʏ ᴜsɪɴɢ /harem ... sᴏ ᴀᴅᴅ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴄᴏʟʟᴇᴄᴛ ʏᴏᴜʀ ʜᴀʀᴇᴍ...✨️ 
+
+◈ ━━━━━━━━ ● ━━━━━━━━ ◈***
         """
         keyboard = [
             [InlineKeyboardButton("ADD ME", url=f'http://t.me/{BOT_USERNAME}?startgroup=new')],
@@ -69,7 +74,7 @@ async def button(update: Update, context: CallbackContext) -> None:
         help_text = """
     ***Help Section:***
     
-***/guess: To Guess character (only works in group)***
+***/grab: To Guess character (only works in group)***
 ***/fav: Add Your fav***
 ***/trade : To trade Characters***
 ***/gift: Give any Character from Your Collection to another user.. (only works in groups)***
@@ -89,7 +94,12 @@ async def button(update: Update, context: CallbackContext) -> None:
         caption = f"""
         ***Heyyyy...***
 
-***I am Grabbing Your Waifu Bot...Add Me in Your group.. And I will send Random Characters After.. every 100 messages in Group... Use /grab to.. Collect that Characters in Your Collection.. and see Collection by using /Harem... So add in Your groups and Collect Your harem***
+***◈ ━━━━━━━━ ● ━━━━━━━━ ◈
+
+✧⁠ WHAT AM I - ɪ ᴀᴍ "ɢʀᴀʙʙɪɴɢ ʏᴏᴜʀ ᴡᴀɪꜰᴜ ʙᴏᴛ"... ᴀᴅᴅ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ...✨️ ᴀɴᴅ ɪ ᴡɪʟʟ sᴇɴᴅ ʀᴀɴᴅᴏᴍ ᴄʜᴀʀᴀᴄᴛᴇʀs ᴀғᴛᴇʀ.. ᴇᴠᴇʀʏ 𝟷𝟶𝟶 ᴍᴇssᴀɢᴇs ɪɴ ɢʀᴏᴜᴘ.
+✧⁠ COMMAND - ᴜsᴇ /grab  ᴛᴏ ᴄᴏʟʟᴇᴄᴛ ᴛʜᴀᴛ ᴄʜᴀʀᴀᴄᴛᴇʀs ɪɴ ʏᴏᴜʀ ᴄᴏʟʟᴇᴄᴛɪᴏɴ ᴀɴᴅ sᴇᴇ ᴄᴏʟʟᴇᴄᴛɪᴏɴ ʙʏ ᴜsɪɴɢ /harem ... sᴏ ᴀᴅᴅ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴄᴏʟʟᴇᴄᴛ ʏᴏᴜʀ ʜᴀʀᴇᴍ...✨️ 
+
+◈ ━━━━━━━━ ● ━━━━━━━━ ◈***
             """
 
         
