@@ -12,7 +12,7 @@ img_url character-name anime-name rarity-number
 
 use rarity number accordingly rarity Map
 
-rarity_map = 1 (🟢 Common), 2 (🟣 Rare) , 3 (🟡 Legendary), 4 (💮 Special Edition), 5 (🔮 Premium Edition), 6 (🎗️ Supreme)"""
+rarity_map = 1 (🟢 𝗖𝗼𝗺𝗺𝗼𝗻), 2 (🟣 𝗥𝗮𝗿𝗲) , 3 (🟡 𝗟𝗲𝗴𝗲𝗻𝗱𝗮𝗿𝘆), 4 (💮 𝗦𝗽𝗲𝗰𝗶𝗮𝗹 𝗘𝗱𝗶𝘁𝗶𝗼𝗻), 5 (🔮 𝗣𝗿𝗲𝗺𝗶𝘂𝗺 𝗘𝗱𝗶𝘁𝗶𝗼𝗻), 6 (🎗️ 𝗦𝘂𝗽𝗿𝗲𝗺𝗲)"""
 
 
 
@@ -48,7 +48,7 @@ async def upload(update: Update, context: CallbackContext) -> None:
             await update.message.reply_text('Invalid URL.')
             return
 
-        rarity_map = {1: "🟢 Common", 2: "🟣 Rare", 3: "🟡 Legendary", 4: "💮 Special Edition", 5: "🔮 Premium Edition",6: "🎗️ Supreme"}
+        rarity_map = {1: "🟢 𝗖𝗼𝗺𝗺𝗼𝗻", 2: "🟣 𝗥𝗮𝗿𝗲", 3: "🟡 𝗟𝗲𝗴𝗲𝗻𝗱𝗮𝗿𝘆", 4: "💮 𝗦𝗽𝗲𝗰𝗶𝗮𝗹 𝗘𝗱𝗶𝘁𝗶𝗼𝗻", 5: "🔮 𝗣𝗿𝗲𝗺𝗶𝘂𝗺 𝗘𝗱𝗶𝘁𝗶𝗼𝗻",6: "🎗️ 𝗦𝘂𝗽𝗿𝗲𝗺𝗲"}
         try:
             rarity = rarity_map[int(args[3])]
         except KeyError:
@@ -77,7 +77,7 @@ async def upload(update: Update, context: CallbackContext) -> None:
             await update.message.reply_text('CHARACTER ADDED....')
         except:
             await collection.insert_one(character)
-            update.effective_message.reply_text("Character Added but no Database Channel Found, Consider adding one.")
+            update.effective_message.reply_text("ᴄʜᴀʀᴀᴄᴛᴇʀ ᴀᴅᴅᴇᴅ ʙᴜᴛ ɴᴏ ᴅᴀᴛᴀʙᴀsᴇ ᴄʜᴀɴɴᴇʟ ғᴏᴜɴᴅ. ᴄᴏɴsɪᴅᴇʀ ᴀᴅᴅɪɴɢ ᴏɴᴇ .")
         
     except Exception as e:
         await update.message.reply_text(f'Character Upload Unsuccessful. Error: {str(e)}\nIf you think this is a source error, forward to: {SUPPORT_CHAT}')
@@ -101,7 +101,7 @@ async def delete(update: Update, context: CallbackContext) -> None:
             await context.bot.delete_message(chat_id=CHARA_CHANNEL_ID, message_id=character['message_id'])
             await update.message.reply_text('DONE')
         else:
-            await update.message.reply_text('Deleted Successfully from db, but character not found In Channel')
+            await update.message.reply_text('ᴅᴇʟᴇᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ ғʀᴏᴍ ᴅʙ, ʙᴜᴛ ᴄʜᴀʀᴀᴄᴛᴇʀ ɴᴏᴛ ғᴏᴜɴᴅ ɪɴ ᴄʜᴀɴɴᴇʟ')
     except Exception as e:
         await update.message.reply_text(f'{str(e)}')
 
@@ -132,7 +132,7 @@ async def update(update: Update, context: CallbackContext) -> None:
         if args[1] in ['name', 'anime']:
             new_value = args[2].replace('-', ' ').title()
         elif args[1] == 'rarity':
-            rarity_map = {1: "🟢 Common", 2: "🟣 Rare", 3: "🟡 Legendary", 4: "💮 Special Edition", 5 : "🔮 Premium Edition", 6: "🎗️ Supreme"}
+            rarity_map = {1: "🟢 𝗖𝗼𝗺𝗺𝗼𝗻", 2: "🟣 𝗥𝗮𝗿𝗲", 3: "🟡 𝗟𝗲𝗴𝗲𝗻𝗱𝗮𝗿𝘆", 4: "💮 𝗦𝗽𝗲𝗰𝗶𝗮𝗹 𝗘𝗱𝗶𝘁𝗶𝗼𝗻", 5 : "🔮 𝗣𝗿𝗲𝗺𝗶𝘂𝗺 𝗘𝗱𝗶𝘁𝗶𝗼𝗻", 6: "🎗️ 𝗦𝘂𝗽𝗿𝗲𝗺𝗲"}
             try:
                 new_value = rarity_map[int(args[2])]
             except KeyError:
@@ -159,13 +159,13 @@ async def update(update: Update, context: CallbackContext) -> None:
             await context.bot.edit_message_caption(
                 chat_id=CHARA_CHANNEL_ID,
                 message_id=character['message_id'],
-                caption=f'<b>Character Name:</b> {character["name"]}\n<b>Anime Name:</b> {character["anime"]}\n<b>Rarity:</b> {character["rarity"]}\n<b>ID:</b> {character["id"]}\nUpdated by <a href="tg://user?id={update.effective_user.id}">{update.effective_user.first_name}</a>',
+                caption=f'<b>Character 𝙉𝙖𝙢𝙚:</b> {character["name"]}\n<b>𝘼𝙣𝙞𝙢𝙚 𝙉𝙖𝙢𝙚:</b> {character["anime"]}\n<b>𝙍𝙖𝙧𝙞𝙩𝙮:</b> {character["rarity"]}\n<b>ID:</b> {character["id"]}\n𝙐𝙥𝙙𝙖𝙩𝙚𝙙 𝘽𝙮 ➪ <a href="tg://user?id={update.effective_user.id}">{update.effective_user.first_name}</a>',
                 parse_mode='HTML'
             )
 
-        await update.message.reply_text('Updated Done in Database.... But sometimes it Takes Time to edit Caption in Your Channel..So wait..')
+        await update.message.reply_text('ᴜᴘᴅᴀᴛᴇᴅ ᴅᴏɴᴇ ɪɴ ᴅᴀᴛᴀʙᴀsᴇ... ʙᴜᴛ sᴏᴍᴇᴛɪᴍᴇs ɪᴛ ᴛᴀᴋᴇs ᴛɪᴍᴇ ᴛᴏ ᴇᴅɪᴛ ᴄᴀᴘᴛɪᴏɴ ɪɴ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ...sᴏ ᴡᴀɪᴛ...')
     except Exception as e:
-        await update.message.reply_text(f'I guess did not added bot in channel.. or character uploaded Long time ago.. Or character not exits.. orr Wrong id')
+        await update.message.reply_text(f'ɪ ɢᴜᴇss ᴅɪᴅ ɴᴏᴛ ᴀᴅᴅᴇᴅ ʙᴏᴛ ɪɴ ᴄʜᴀɴɴᴇʟ... ᴏʀ ᴄʜᴀʀᴀᴄᴛᴇʀ ᴜᴘʟᴏᴀᴅᴇᴅ ʟᴏɴɢ ᴛɪᴍᴇ ᴀɢᴏ... ᴏʀ ᴄʜᴀʀᴀᴄᴛᴇʀ ɴᴏᴛ ᴇxɪᴛs... ᴏʀʀ ᴡʀᴏɴɢ ɪᴅ')
 
 UPLOAD_HANDLER = CommandHandler('upload', upload, block=False)
 application.add_handler(UPLOAD_HANDLER)
