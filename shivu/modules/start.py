@@ -44,10 +44,10 @@ async def start(update: Update, context: CallbackContext) -> None:
 ◈ ━━━━━━━━ ● ━━━━━━━━ ◈***
         """
         keyboard = [
-            [InlineKeyboardButton("ADD ME", url=f'http://t.me/{BOT_USERNAME}?startgroup=new')],
-            [InlineKeyboardButton("SUPPORT", url=f'https://t.me/{SUPPORT_CHAT}'),
-            InlineKeyboardButton("UPDATES", url=f'https://t.me/{UPDATE_CHAT}')],
-            [InlineKeyboardButton("HELP", callback_data='help')]
+            [InlineKeyboardButton("—͟͞͞  ᴀᴅᴅ ᴍᴇ —͟͞͞", url=f'http://t.me/{BOT_USERNAME}?startgroup=new')],
+            [InlineKeyboardButton("—͟͞͞  sᴜᴘᴘᴏʀᴛ —͟͞͞", url=f'https://t.me/{SUPPORT_CHAT}'),
+            InlineKeyboardButton("—͟͞͞  ᴜᴘᴅᴀᴛᴇs —͟͞͞", url=f'https://t.me/{UPDATE_CHAT}')],
+            [InlineKeyboardButton("—͟͞͞  ʜᴇʟᴘ —͟͞͞", callback_data='help')]
                ]
         reply_markup = InlineKeyboardMarkup(keyboard)
         photo_url = random.choice(PHOTO_URL)
