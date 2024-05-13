@@ -1,5 +1,7 @@
 from telegram import Update
 from itertools import groupby
+import urllib.request
+import re
 import math
 from html import escape 
 import random
@@ -15,9 +17,9 @@ async def harem(update: Update, context: CallbackContext, page=0) -> None:
     user = await user_collection.find_one({'id': user_id})
     if not user:
         if update.message:
-            await update.message.reply_text('You Have Not Guessed any Characters Yet..')
+            await update.message.reply_text('𝙔𝙤𝙪 𝙃𝙖𝙫𝙚 𝙉𝙤𝙩 𝙂𝙧𝙖𝙗 𝙖𝙣𝙮 𝙒𝙖𝙞𝙛𝙪 𝙔𝙚𝙩...')
         else:
-            await update.callback_query.edit_message_text('You Have Not Guessed any Characters Yet..')
+            await update.callback_query.edit_message_text('𝙔𝙤𝙪 𝙃𝙖𝙫𝙚 𝙉𝙤𝙩 𝙂𝙧𝙖𝙗 𝙖𝙣𝙮 𝙒𝙖𝙞𝙛𝙪 𝙔𝙚𝙩...')
         return
 
     characters = sorted(user['characters'], key=lambda x: (x['anime'], x['id']))
@@ -28,7 +30,7 @@ async def harem(update: Update, context: CallbackContext, page=0) -> None:
     unique_characters = list({character['id']: character for character in characters}.values())
 
     
-    total_pages = math.ceil(len(unique_characters) / 15)  
+    total_pages = math.ceil(len(unique_characters) / 7)  
 
     if page < 0 or page >= total_pages:
         page = 0  
@@ -36,18 +38,18 @@ async def harem(update: Update, context: CallbackContext, page=0) -> None:
     harem_message = f"<b>{escape(update.effective_user.first_name)}'s Harem - Page {page+1}/{total_pages}</b>\n"
 
     
-    current_characters = unique_characters[page*15:(page+1)*15]
+    current_characters = unique_characters[page*7:(page+1)*7]
 
     
     current_grouped_characters = {k: list(v) for k, v in groupby(current_characters, key=lambda x: x['anime'])}
 
     for anime, characters in current_grouped_characters.items():
-        harem_message += f'\n<b>{anime} {len(characters)}/{await collection.count_documents({"anime": anime})}</b>\n'
+        harem_message += f'\n⥱ <b>{anime} {len(characters)}/{await collection.count_documents({"anime": anime})}</b>\n'
 
         for character in characters:
             
-            count = character_counts[character['id']]  
-            harem_message += f'{character["id"]} {character["name"]} ×{count}\n'
+            count = character_counts[character['id']]  # Get the count from the character_counts dictionary
+            harem_message += f'➥{character["id"]}| {character["rarity"]} |{character["name"]} ×{count}\n'
 
 
     total_count = len(user['characters'])
@@ -132,7 +134,7 @@ async def harem_callback(update: Update, context: CallbackContext) -> None:
 
 
 
-application.add_handler(CommandHandler(["harem", "collection"], harem,block=False))
+application.add_handler(CommandHandler(["harem"], harem,block=False))
 harem_handler = CallbackQueryHandler(harem_callback, pattern='^harem', block=False)
 application.add_handler(harem_handler)
     
