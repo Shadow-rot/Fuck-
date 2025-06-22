@@ -2,9 +2,10 @@ FROM python:3.8.5-slim-buster
 
 ENV PIP_NO_CACHE_DIR 1
 
+# Fix package repo source
 RUN sed -i.bak 's/us-west-2\.ec2\.//' /etc/apt/sources.list
 
-# Installing Required Packages
+# Install required system packages
 RUN apt update && apt upgrade -y && \
     apt install --no-install-recommends -y \
     debian-keyring \
@@ -58,20 +59,19 @@ RUN apt update && apt upgrade -y && \
     unzip \
     libopus0 \
     libopus-dev \
-    && rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
+    && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* /tmp/*
 
-# Pypi package Repo upgrade
+# Upgrade pip & setuptools
 RUN pip3 install --upgrade pip setuptools
 
-# Copy Python Requirements to /root/FallenRobot
-RUN git clone https://github.com/Shadow-rot/Fuck-
-WORKDIR /root/ptb
+# Clone your actual bot repo
+RUN git clone https://github.com/Shadow-rot/Fuck- /root/FuckBot
 
+# Set the working directory to the cloned repo
+WORKDIR /root/FuckBot
 
-ENV PATH="/home/bot/bin:$PATH"
-
-# Install requirements
+# Install Python dependencies
 RUN pip3 install -U -r requirements.txt
 
-# Starting Worker
-CMD ["python3","-m", "shivu"]
+# Default startup command (change 'shivu' to your main module if different)
+CMD ["python3", "-m", "shivu"]
