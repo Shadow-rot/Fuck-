@@ -1,5 +1,5 @@
 
-from configs import Config
+from config import configs
 from handlers.database import db
 from pyrogram import Client
 from pyrogram.types import Message
