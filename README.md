@@ -1,4 +1,4 @@
-![Image](https://graph.org/file/9901c2070cea11d1aa194.jpg)
+![Image](https://files.catbox.moe/z86sr4.jpg)
 
 ## WAIFU & HUSBANDO CATCHER 
 
